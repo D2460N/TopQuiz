@@ -7,8 +7,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.topquizz.Model.Question;
+import com.example.topquizz.Model.QuestionBank;
 import com.example.topquizz.R;
 
+import java.util.Arrays;
 
 public class GameActivity extends AppCompatActivity {
 
@@ -18,10 +21,18 @@ public class GameActivity extends AppCompatActivity {
     private Button gAnswer3;
     private Button gAnswer4;
 
+    private QuestionBank mQuestionBank;
+    private Question mCurrentQuestion;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
+        mQuestionBank = this.generateQuestions();
+
+
 
         gQuestionText = (TextView) findViewById(R.id.activity_game_question_text);
         gAnswer1 = (Button) findViewById(R.id.activity_game_answer1_btn);
@@ -56,5 +67,14 @@ public class GameActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private QuestionBank generateQuestions() { Question question1 = new Question("What is the name of the current french president?",
+            Arrays.asList("François Hollande", "Emmanuel Macron", "Jacques Chirac", "François Mitterand"),
+            1);
+
+
+        return new QuestionBank(Arrays.asList(question1 ));
+    }
     }
 }
