@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.topquizz.Model.User;
 import com.example.topquizz.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -18,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
   private TextView mGreetingText;
   private EditText mNameinput;
   private Button mPlayButton;
-  private User mUser:
+  private User mUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

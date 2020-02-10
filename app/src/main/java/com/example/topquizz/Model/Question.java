@@ -7,11 +7,20 @@ public class Question {
     private List<String> mChoiceList;
     private int mAnswerIndex;
 
-    public String getmQuestion() { return mQuestion; }
+    public Question(String s, List<String> asList, int i) {
+    }
 
-    public void setmQuestion(String mQuestion) { this.mQuestion = mQuestion; }
+    public String getmQuestion() {
+        return mQuestion;
+    }
 
-    public List<String> getmChoiceList() { return mChoiceList; }
+    public void setmQuestion(String mQuestion) {
+        this.mQuestion = mQuestion;
+    }
+
+    public List<String> getmChoiceList() {
+        return mChoiceList;
+    }
 
     public void setChoiceList(List<String> choiceList) {
         if (choiceList == null) {
@@ -20,16 +29,19 @@ public class Question {
         mChoiceList = choiceList;
 
 
-        public int getmAnswerIndex() { return mAnswerIndex; }
-
-
-        public void setAnswerIndex( int answerIndex){
-            if (answerIndex < 0 || answerIndex >= mChoiceList.size()) {
-                throw new IllegalArgumentException("Answer index is out of bound");
-            }
-
-            mAnswerIndex = answerIndex;
+        public int getmAnswerIndex(); {
+            return mAnswerIndex;
         }
 
 
+        public void setAnswerIndex;
+        ( int answerIndex)
+        if (answerIndex < 0 || answerIndex >= mChoiceList.size()) {
+            throw new IllegalArgumentException("Answer index is out of bound");
+        }
+
+        mAnswerIndex = answerIndex;
+
+
     }
+}
