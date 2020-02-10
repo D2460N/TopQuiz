@@ -9,15 +9,15 @@ public class QuestionBank {
 
     public QuestionBank(List<Question> questionList) {
         mQuestionList = questionList;
-        // Shuffle the question list before storing it
+
         Collections.shuffle(mQuestionList);
 
         mNextQuestionIndex = 0;
     }
 
     public Question getQuestion() {
-        // Loop over the questions and return a new one at each call
-        if(mNextQuestionIndex == mQuestionList.size()){
+
+        if (mNextQuestionIndex == mQuestionList.size()) {
             mNextQuestionIndex = 0;
         }
 
