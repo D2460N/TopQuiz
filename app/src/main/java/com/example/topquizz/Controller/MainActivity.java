@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
 
                 mPreferences.edit().putString(PREF_KEY_FIRSTNAME, mUser.getFirstname()).apply();
 
-               
+
                 Intent gameActivityIntent = new Intent(MainActivity.this, GameActivity.class);
                 startActivityForResult(gameActivityIntent, GAME_ACTIVITY_REQUEST_CODE);
             }
