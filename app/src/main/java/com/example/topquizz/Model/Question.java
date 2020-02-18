@@ -19,7 +19,7 @@ public class Question {
         return mQuestion;
     }
 
-    public void setQuestion(String question) {
+    private void setQuestion(String question) {
         mQuestion = question;
     }
 
@@ -27,7 +27,7 @@ public class Question {
         return mChoiceList;
     }
 
-    public void setChoiceList(List<String> choiceList) {
+    private void setChoiceList(List<String> choiceList) {
         if (choiceList == null) {
             throw new IllegalArgumentException("Array cannot be null");
         }
@@ -39,7 +39,7 @@ public class Question {
         return mAnswerIndex;
     }
 
-    public void setAnswerIndex(int answerIndex) {
+    private void setAnswerIndex(int answerIndex) {
         if (answerIndex < 0 || answerIndex >= mChoiceList.size()) {
             throw new IllegalArgumentException("Answer index is out of bound");
         }
@@ -56,3 +56,6 @@ public class Question {
                 '}';
     }
 }
+
+
+//ok

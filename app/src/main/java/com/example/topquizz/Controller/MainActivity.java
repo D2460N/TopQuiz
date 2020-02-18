@@ -43,9 +43,9 @@ public class MainActivity extends AppCompatActivity {
 
         mPreferences = getPreferences(MODE_PRIVATE);
 
-        mGreetingText = (TextView) findViewById(R.id.activity_main_greeting_txt);
-        mNameInput = (EditText) findViewById(R.id.activity_main_name_input);
-        mPlayButton = (Button) findViewById(R.id.activity_main_play_btn);
+        mGreetingText =  findViewById(R.id.activity_main_greeting_txt);
+        mNameInput =  findViewById(R.id.activity_main_name_input);
+        mPlayButton =  findViewById(R.id.activity_main_play_btn);
 
         mPlayButton.setEnabled(false);
 
@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
 
                 mPreferences.edit().putString(PREF_KEY_FIRSTNAME, mUser.getFirstname()).apply();
 
-                // User clicked the button
+               
                 Intent gameActivityIntent = new Intent(MainActivity.this, GameActivity.class);
                 startActivityForResult(gameActivityIntent, GAME_ACTIVITY_REQUEST_CODE);
             }
@@ -146,3 +146,6 @@ public class MainActivity extends AppCompatActivity {
         out.println("MainActivity::onDestroy()");
     }
 }
+
+
+//ok

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Controller.LeaderActivity">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/leaderboard_banner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#d9d9d9"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="LEADERBOARD"
+            android:textSize="40dp" />
+
+        <Button
+            android:id="@+id/setByAlphabetButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/leaderboard_banner"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp"
+            android:text="Set alphabetically" />
+
+        <Button
+            android:id="@+id/setByScoreButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/leaderboard_banner"
+            android:layout_toRightOf="@+id/setByAlphabetButton"
+            android:text="Set by score" />
+
+        <TextView
+            android:id="@+id/textViewName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textAlignment="textStart"
+            tools:ignore="RtlHardcoded" />
+
+
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>

@@ -58,14 +58,14 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
         mEnableTouchEvents = true;
 
-        // Wire widgets
+
         mQuestionTextView = findViewById(R.id.activity_game_question_text);
         mAnswerButton1 = findViewById(R.id.activity_game_answer1_btn);
         mAnswerButton2 = findViewById(R.id.activity_game_answer2_btn);
         mAnswerButton3 = findViewById(R.id.activity_game_answer3_btn);
         mAnswerButton4 = findViewById(R.id.activity_game_answer4_btn);
 
-        // Use the tag property to 'name' the buttons
+
         mAnswerButton1.setTag(0);
         mAnswerButton2.setTag(1);
         mAnswerButton3.setTag(2);
@@ -93,11 +93,11 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         int responseIndex = (int) v.getTag();
 
         if (responseIndex == mCurrentQuestion.getAnswerIndex()) {
-            // Good answer
+
             Toast.makeText(this, "Correct", Toast.LENGTH_SHORT).show();
             mScore++;
         } else {
-            // Wrong answer
+
             Toast.makeText(this, "Wrong answer!", Toast.LENGTH_SHORT).show();
         }
 
@@ -108,17 +108,16 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             public void run() {
                 mEnableTouchEvents = true;
 
-                // If this is the last question, ends the game.
-                // Else, display the next question.
+
                 if (--mNumberOfQuestions == 0) {
-                    // End the game
+
                     endGame();
                 } else {
                     mCurrentQuestion = mQuestionBank.getQuestion();
                     displayQuestion(mCurrentQuestion);
                 }
             }
-        }, 2000); // LENGTH_SHORT is usually 2 second long
+        }, 2000);
     }
 
     @Override
@@ -134,7 +133,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        // End the activity
                         Intent intent = new Intent();
                         intent.putExtra(BUNDLE_EXTRA_SCORE, mScore);
                         setResult(RESULT_OK, intent);
@@ -237,3 +235,5 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         System.out.println("GameActivity::onDestroy()");
     }
 }
+
+//ok
