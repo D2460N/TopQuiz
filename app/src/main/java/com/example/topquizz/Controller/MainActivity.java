@@ -69,104 +69,70 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        System.out.println("MainActivity::onCreate()");
-
+        mGreetingText = findViewById(R.id.activity_main_greeting_txt);
+        mNameInput = findViewById(R.id.activity_main_name_input);
+        mPlayButton = findViewById(R.id.activity_main_play_btn);
+        mLeaderButton = findViewById(R.id.activity_main_leaderboard);
         mUser = new User();
-
-        mPreferences = getPreferences(MODE_PRIVATE);
-
-        mGreetingText =  findViewById(R.id.activity_main_greeting_txt);
-        mNameInput =  findViewById(R.id.activity_main_name_input);
-        mPlayButton =  findViewById(R.id.activity_main_play_btn);
-
         mPlayButton.setEnabled(false);
+        mPreferences = getSharedPreferences("game_data", MODE_PRIVATE);
 
-        greetUser();
+        String alreadyExistingScores = mPreferences.getString(theSCORE, "");
+        if (alreadyExistingScores.equals("")){
+            mLeaderButton.setVisibility(View.INVISIBLE);
+        } else {
+            mLeaderButton.setVisibility(View.VISIBLE);
+        }
+
+
+
+        mLeaderButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent leaderActivityIntent = new Intent(MainActivity.this, LeaderActivity.class);
+                startActivity(leaderActivityIntent);
+            }
+        });
 
         mNameInput.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
             }
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                mPlayButton.setEnabled(s.toString().length() != 0);
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                mPlayButton.setEnabled(charSequence.length() > 0);
             }
 
             @Override
-            public void afterTextChanged(Editable s) {
-
+            public void afterTextChanged(Editable editable) {
             }
         });
 
         mPlayButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                String firstname = mNameInput.getText().toString();
-                mUser.setFirstname(firstname);
-
-                mPreferences.edit().putString(PREF_KEY_FIRSTNAME, mUser.getFirstname()).apply();
-
+            public void onClick(View view) {
 
                 Intent gameActivityIntent = new Intent(MainActivity.this, GameActivity.class);
+                gameActivityIntent.putExtra("name", mNameInput.getText().toString());
                 startActivityForResult(gameActivityIntent, GAME_ACTIVITY_REQUEST_CODE);
+
+
             }
         });
+
+        mLeaderButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent leaderActivityIntent = new Intent(MainActivity.this, LeaderActivity.class);
+                startActivity(leaderActivityIntent);
+            }
+        });
+
+
     }
 
-
-    private void greetUser() {
-        String firstname = mPreferences.getString(PREF_KEY_FIRSTNAME, null);
-
-        if (null != firstname) {
-            int score = mPreferences.getInt(PREF_KEY_SCORE, 0);
-
-            String fulltext = "Welcome back, " + firstname
-                    + "!\nYour last score was " + score
-                    + ", will you do better this time?";
-            mGreetingText.setText(fulltext);
-            mNameInput.setText(firstname);
-            mNameInput.setSelection(firstname.length());
-            mPlayButton.setEnabled(true);
-        }
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        out.println("MainActivity::onStart()");
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        out.println("MainActivity::onResume()");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-
-        out.println("MainActivity::onPause()");
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-
-        out.println("MainActivity::onStop()");
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-
-        out.println("MainActivity::onDestroy()");
-    }
 }
-
-
 //ok
