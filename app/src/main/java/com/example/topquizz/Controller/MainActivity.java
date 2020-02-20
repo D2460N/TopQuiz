@@ -33,8 +33,6 @@ public class MainActivity extends AppCompatActivity {
     public static final String theSCORE = "KEY_2";
     private SharedPreferences mPreferences;
 
-    public static final String PREF_KEY_SCORE = "PREF_KEY_SCORE";
-    public static final String PREF_KEY_FIRSTNAME = "PREF_KEY_FIRSTNAME";
 
 
     @Override
