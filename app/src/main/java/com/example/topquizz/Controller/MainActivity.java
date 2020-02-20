@@ -17,8 +17,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.topquizz.Model.User;
 import com.example.topquizz.R;
-import static com.example.topquizz.Controller.LeaderActivity.theSCORE;
-import
 
 
 import static java.lang.System.out;
@@ -31,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     private Button mLeaderButton;
     private User mUser;
     public static final int GAME_ACTIVITY_REQUEST_CODE = 42;
+    public static final String theNAME = "KEY_1";
+    public static final String theSCORE = "KEY_2";
     private SharedPreferences mPreferences;
 
     public static final String PREF_KEY_SCORE = "PREF_KEY_SCORE";
@@ -115,16 +115,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (GAME_ACTIVITY_REQUEST_CODE == requestCode && RESULT_OK == resultCode) {
-            int score = data.getIntExtra(GameActivity.BUNDLE_EXTRA_SCORE, 0);
-
-            mPreferences.edit().putInt(PREF_KEY_SCORE, score).apply();
-
-            greetUser();
-        }
-    }
 
     private void greetUser() {
         String firstname = mPreferences.getString(PREF_KEY_FIRSTNAME, null);

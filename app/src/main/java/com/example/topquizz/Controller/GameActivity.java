@@ -21,6 +21,7 @@ import com.example.topquizz.R;
 
 public class GameActivity extends AppCompatActivity implements View.OnClickListener {
 
+
     private TextView mQuestionTextView;
     private Button mAnswerButton1;
     private Button mAnswerButton2;
@@ -36,6 +37,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     public static final String BUNDLE_EXTRA_SCORE = "BUNDLE_EXTRA_SCORE";
     public static final String BUNDLE_STATE_SCORE = "currentScore";
     public static final String BUNDLE_STATE_QUESTION = "currentQuestion";
+    public static final String BUNDLE_EXTRA_NAME = "currentName";
 
     private boolean mEnableTouchEvents;
 
