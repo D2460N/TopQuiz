@@ -17,6 +17,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.topquizz.Model.User;
 import com.example.topquizz.R;
+import static com.example.topquizz.Controller.LeaderActivity.theSCORE;
+import
+
 
 import static java.lang.System.out;
 
@@ -25,12 +28,41 @@ public class MainActivity extends AppCompatActivity {
     private TextView mGreetingText;
     private EditText mNameInput;
     private Button mPlayButton;
+    private Button mLeaderButton;
     private User mUser;
     public static final int GAME_ACTIVITY_REQUEST_CODE = 42;
     private SharedPreferences mPreferences;
 
     public static final String PREF_KEY_SCORE = "PREF_KEY_SCORE";
     public static final String PREF_KEY_FIRSTNAME = "PREF_KEY_FIRSTNAME";
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == GAME_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
+            int score = data.getIntExtra(GameActivity.BUNDLE_EXTRA_SCORE, 0);
+            String alreadyExistingScores = mPreferences.getString(theSCORE, "");
+            if (alreadyExistingScores.equals("")) {
+                alreadyExistingScores += score;
+                mLeaderButton.setVisibility(View.VISIBLE);
+            } else {
+                alreadyExistingScores += ", " + score;
+                mLeaderButton.setVisibility(View.VISIBLE);
+
+            }
+            mPreferences.edit().putString(theSCORE, alreadyExistingScores).apply();
+
+            String name = data.getStringExtra(GameActivity.BUNDLE_EXTRA_NAME);
+            String alreadyExistingNames = mPreferences.getString(theNAME, "");
+            if (alreadyExistingNames.equals("")) {
+                alreadyExistingNames += name;
+            } else {
+                alreadyExistingNames += ", " + name;
+            }
+            mPreferences.edit().putString(theNAME, alreadyExistingNames).apply();
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,7 +118,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (GAME_ACTIVITY_REQUEST_CODE == requestCode && RESULT_OK == resultCode) {
-            // Fetch the score from the Intent
             int score = data.getIntExtra(GameActivity.BUNDLE_EXTRA_SCORE, 0);
 
             mPreferences.edit().putInt(PREF_KEY_SCORE, score).apply();

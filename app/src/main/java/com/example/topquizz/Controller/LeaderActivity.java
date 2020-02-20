@@ -20,7 +20,7 @@ import com.example.topquizz.R;
 
 public class LeaderActivity extends AppCompatActivity {
 
-    public static final int GAME_ACTIVITY_REQUEST_CODE = ;
+    public static final int GAME_ACTIVITY_REQUEST_CODE = 42 ;
     public static final String theNAME = "KEY_1";
     public static final String theSCORE = "KEY_2";
     private Button mScoreButton;
